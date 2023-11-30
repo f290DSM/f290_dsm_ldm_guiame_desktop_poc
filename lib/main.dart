@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/presentation/pages/home_page.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/ui/menus.dart';
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
@@ -35,6 +36,20 @@ class _MyAppState extends ConsumerState<MyApp> {
     }
   }
 
+  ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    useMaterial3: true,
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
+    ),
+    appBarTheme: const AppBarTheme(
+      color: Colors.amber,
+      iconTheme: IconThemeData(color: Colors.black38),
+    ),
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+  );
+
   @override
   Widget build(BuildContext context) {
     return PlatformMenuBar(
@@ -42,11 +57,8 @@ class _MyAppState extends ConsumerState<MyApp> {
       child: MaterialApp(
         navigatorKey: navigatorKey,
         showSemanticsDebugger: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.deepOrange,
-        ),
-        home: const Placeholder(),
+        theme: lightTheme,
+        home: HomePage(),
       ),
     );
   }
