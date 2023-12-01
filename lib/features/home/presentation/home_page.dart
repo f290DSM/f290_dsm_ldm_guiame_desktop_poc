@@ -1,3 +1,4 @@
+import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/presentation/pages/entity_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,10 +31,10 @@ class HomePage extends ConsumerWidget {
   HomePage({super.key});
 
   final pages = [
-    _buildMockPage('Tipos de Entidades'),
-    _buildMockPage('Entidades'),
-    _buildMockPage('Tipos de Artefatos'),
-    _buildMockPage('Artefatos'),
+    const EntityTypePage(),
+    Container(color: Colors.blue.shade300),
+    Container(color: Colors.purple.shade300),
+    Container(color: Colors.pink.shade300),
   ];
 
   @override
@@ -96,7 +97,7 @@ class HomePage extends ConsumerWidget {
             thickness: 1,
             width: 1,
           ),
-          pages[ref.watch(indexStateProvider)],
+          Expanded(child: pages[ref.watch(indexStateProvider)]),
         ],
       ),
     );

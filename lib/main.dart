@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/presentation/pages/home_page.dart';
+import 'package:f290_dsm_ldm_guiame_desktop_poc/features/home/presentation/home_page.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/ui/menus.dart';
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
