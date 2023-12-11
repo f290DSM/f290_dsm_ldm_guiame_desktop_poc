@@ -27,4 +27,21 @@ class TipoEntidadeRepositoryImpl implements TipoEntidadeRepository {
       return const Left(ServerFailure(message: "", errorCode: 500));
     }
   }
+
+  @override
+  Future<Either<Failure, List<TipoEntidade>>> getAll() async {
+    try {
+      return Right(await dataSource.getAll());
+    } catch (e) {
+      if (e is ServerException) {
+        return Left(
+          ServerFailure(
+            message: e.props[0] as String,
+            errorCode: e.props[1] as int,
+          ),
+        );
+      }
+      return const Left(ServerFailure(message: "", errorCode: 500));
+    }
+  }
 }

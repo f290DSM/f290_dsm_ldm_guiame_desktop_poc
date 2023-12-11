@@ -30,4 +30,25 @@ class TipoEntidadeDataSourceImpl implements TipoEntidadeDataSource {
 
     return TipoEntidade.fromJson(jsonDecode(response.body));
   }
+
+  @override
+  Future<List<TipoEntidade>> getAll() async {
+    final response = await client.get(
+      Uri.parse('http://localhost:3000/api/tipos_entidades'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode != HttpStatus.ok) {
+      throw ServerException(
+        errorCode: response.statusCode,
+        message: 'Falha ao incluir novo tipo de entidade.',
+      );
+    }
+
+    return jsonDecode(response.body)
+        .map<TipoEntidade>((json) => TipoEntidade.fromJson(json))
+        .toList();
+  }
 }

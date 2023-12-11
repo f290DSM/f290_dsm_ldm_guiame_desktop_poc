@@ -2,4 +2,5 @@ import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/domain/entiti
 
 abstract class TipoEntidadeDataSource {
   Future<TipoEntidade> create(TipoEntidade tipoEntidade);
+  Future<List<TipoEntidade>> getAll();
 }
