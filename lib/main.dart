@@ -55,6 +55,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     return PlatformMenuBar(
       menus: ref.read(menuProvider).createMenus(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         showSemanticsDebugger: false,
         theme: lightTheme,

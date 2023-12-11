@@ -2,8 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/core/error/exceptions.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/core/error/failures.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/data/datasources/tipo_entidade_datasource.dart';
+import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/data/datasources/tipo_entidade_datasource_impl.dart';
 import 'package:f290_dsm_ldm_guiame_desktop_poc/features/entidades/domain/entities/tipo_entidade.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/repositories/tipo_entidade_respository.dart';
+import 'package:http/http.dart' as http;
 
 class TipoEntidadeRepositoryImpl implements TipoEntidadeRepository {
   final TipoEntidadeDataSource dataSource;
@@ -45,3 +48,8 @@ class TipoEntidadeRepositoryImpl implements TipoEntidadeRepository {
     }
   }
 }
+
+final tipoEntidadeProvider = Provider<TipoEntidadeRepository>((ref) {
+  final dataSource = TipoEntidadeDataSourceImpl(client: http.Client());
+  return TipoEntidadeRepositoryImpl(dataSource);
+});

@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class TipoEntidadeDataSourceImpl implements TipoEntidadeDataSource {
   final http.Client client;
 
-  TipoEntidadeDataSourceImpl(this.client);
+  TipoEntidadeDataSourceImpl({required this.client});
 
   @override
   Future<TipoEntidade> create(TipoEntidade tipoEntidade) async {
